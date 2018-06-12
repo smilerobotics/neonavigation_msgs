@@ -1,0 +1,17 @@
+sudo: required
+services: docker
+
+env:
+  global:
+    - PACKAGE_NAME=neonavigation_msgs
+  matrix:
+    - ROS_DISTRO_TARGET=kinetic
+branches:
+  only:
+    - master
+
+install: true
+
+script:
+  - docker build -t neonavigation-msgs -f Dockerfile.${ROS_DISTRO_TARGET} --pull=true ${TRAVIS_BUILD_DIR}
+  - docker run --rm -it -e TRAVIS_PULL_REQUEST -e TRAVIS_PULL_REQUEST_SLUG -e TRAVIS_BOT_GITHUB_TOKEN -e GITHUB_API_URL_BASE neonavigation-msgs /catkin_ws/src/${PACKAGE_NAME}/.travis/test.sh
