@@ -9,13 +9,13 @@ find_package(catkin REQUIRED
 )
 
 add_message_files(
-	FILES
+  FILES
     CSpace3D.msg
     CSpace3DUpdate.msg
     MapMetaData3D.msg
 )
 generate_messages(
-	DEPENDENCIES
+  DEPENDENCIES
     geometry_msgs
     std_msgs
 )
@@ -23,5 +23,6 @@ generate_messages(
 catkin_package(
   CATKIN_DEPENDS
     geometry_msgs
+    message_runtime
     std_msgs
 )

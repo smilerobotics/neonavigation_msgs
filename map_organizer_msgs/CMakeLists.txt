@@ -3,8 +3,8 @@ project(map_organizer_msgs)
 
 find_package(catkin REQUIRED
   COMPONENTS
-    nav_msgs
     message_generation
+    nav_msgs
 )
 
 add_message_files(
@@ -17,6 +17,7 @@ generate_messages(
 )
 
 catkin_package(
-  DEPENDS
+  CATKIN_DEPENDS
+    message_runtime
     nav_msgs
 )

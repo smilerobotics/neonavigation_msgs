@@ -13,8 +13,8 @@ add_service_files(
 )
 add_message_files(
   FILES
-    TrajectoryTrackerStatus.msg
     TrajectoryServerStatus.msg
+    TrajectoryTrackerStatus.msg
 )
 generate_messages(
   DEPENDENCIES
@@ -22,6 +22,7 @@ generate_messages(
 )
 
 catkin_package(
-  DEPENDS
+  CATKIN_DEPENDS
+    message_runtime
     std_msgs
 )

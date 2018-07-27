@@ -3,7 +3,7 @@
 set -o errexit
 set -o verbose
 
-pip install gh-pr-comment
+pip install gh-pr-comment catkin_lint
 
 source /opt/ros/${ROS_DISTRO}/setup.bash
 source /catkin_ws/devel/setup.bash
@@ -11,6 +11,17 @@ source /catkin_ws/devel/setup.bash
 cd /catkin_ws
 
 sync
+
+
+pkgs=`find . -name package.xml | xargs -n1 dirname`
+catkin_lint $pkgs \
+  || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO}" \
+      "<details><summary>catkin_lint failed</summary>
+
+\`\`\`
+`catkin_lint $pkgs 2>&1`
+\`\`\`
+</details>"; false)
 
 sed -i -e '5a set(CMAKE_C_FLAGS "-Wall -Werror -O2")' \
   /opt/ros/${ROS_DISTRO}/share/catkin/cmake/toplevel.cmake
@@ -20,11 +31,11 @@ sed -i -e '5a set(CMAKE_CXX_FLAGS "-Wall -Werror -O2")' \
 CM_OPTIONS=""
 
 catkin_make ${CM_OPTIONS} \
-  || (gh-pr-comment FAILED '```catkin_make``` failed'; false)
+  || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO}" '```catkin_make``` failed'; false)
 catkin_make tests ${CM_OPTIONS} \
-  || (gh-pr-comment FAILED '```catkin_make tests``` failed'; false)
+  || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO}" '```catkin_make tests``` failed'; false)
 catkin_make run_tests ${CM_OPTIONS} \
-  || (gh-pr-comment FAILED '```catkin_make run_tests``` failed'; false)
+  || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO}" '```catkin_make run_tests``` failed'; false)
 
 if [ catkin_test_results ];
 then
@@ -41,9 +52,10 @@ else
 `find build/test_results/ -name *.xml | xargs -n 1 -- bash -c 'echo; echo \#\#\# $0; echo; echo \\\`\\\`\\\`; xmllint --format $0; echo \\\`\\\`\\\`;'`
 "
 fi
-catkin_test_results || (gh-pr-comment FAILED "Test failed$result_text"; false)
+catkin_test_results || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO}" "<details><summary>Test failed</summary>
 
-gh-pr-comment PASSED "All tests passed$result_text"
+$result_text</details>"; false)
 
-cd ..
-rm -rf /catkin_ws || true
+gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] PASSED on ${ROS_DISTRO}" "<details><summary>All tests passed</summary>
+
+$result_text</details>" || true
