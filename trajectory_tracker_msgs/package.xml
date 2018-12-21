@@ -13,6 +13,12 @@
   <build_depend>message_generation</build_depend>
   <build_export_depend>message_runtime</build_export_depend>
   <exec_depend>message_runtime</exec_depend>
-  
+
+  <test_depend>nav_msgs</test_depend>
+  <test_depend>roscpp</test_depend>
+  <test_depend>roslint</test_depend>
+  <test_depend>rosunit</test_depend>
+
   <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
 </package>
