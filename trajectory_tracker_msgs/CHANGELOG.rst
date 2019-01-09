@@ -2,6 +2,11 @@
 Changelog for package trajectory_tracker_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.3.1 (2019-01-09)
+------------------
+* trajectory_tracker_msgs: fix header install directory (`#13 <https://github.com/at-wat/neonavigation_msgs/issues/13>`_)
+* Contributors: Atsushi Watanabe
+
 0.3.0 (2018-12-21)
 ------------------
 * trajectory_tracker_msgs: add PathWithVelocity message (`#9 <https://github.com/at-wat/neonavigation_msgs/issues/9>`_)
