@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(costmap_cspace_msgs)
 
-find_package(catkin REQUIRED
-  COMPONENTS
-    geometry_msgs
-    message_generation
-    std_msgs
+set(MESSAGE_DEPENDS
+  geometry_msgs
+  std_msgs
 )
+
+find_package(catkin REQUIRED COMPONENTS message_generation ${MESSAGE_DEPENDS})
 
 add_message_files(
   FILES
@@ -14,15 +14,5 @@ add_message_files(
     CSpace3DUpdate.msg
     MapMetaData3D.msg
 )
-generate_messages(
-  DEPENDENCIES
-    geometry_msgs
-    std_msgs
-)
-
-catkin_package(
-  CATKIN_DEPENDS
-    geometry_msgs
-    message_runtime
-    std_msgs
-)
+generate_messages(DEPENDENCIES ${MESSAGE_DEPENDS})
+catkin_package(CATKIN_DEPENDS message_runtime ${MESSAGE_DEPENDS})

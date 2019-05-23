@@ -1,4 +1,5 @@
 services: docker
+language: bash
 addons:
   apt:
     packages:
@@ -8,7 +9,6 @@ env:
   global:
     - PACKAGE_NAME=neonavigation_msgs
   matrix:
-    - ROS_DISTRO_TARGET=indigo
     - ROS_DISTRO_TARGET=kinetic
     - ROS_DISTRO_TARGET=melodic
 branches:
@@ -23,8 +23,10 @@ install: true
 script:
   - docker build
     -t neonavigation-msgs
-    -f Dockerfile.${ROS_DISTRO_TARGET}
-    --pull=true ${TRAVIS_BUILD_DIR} || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO_TARGET}" "docker build failed"; false)
+    -f .travis/Dockerfile
+    --pull=true ${TRAVIS_BUILD_DIR}
+    --build-arg ROS_DISTRO=${ROS_DISTRO_TARGET}
+    || (gh-pr-comment "[#${TRAVIS_BUILD_NUMBER}] FAILED on ${ROS_DISTRO_TARGET}" "docker build failed"; false)
   - docker run --rm -it
     -e TRAVIS_PULL_REQUEST
     -e TRAVIS_PULL_REQUEST_SLUG
