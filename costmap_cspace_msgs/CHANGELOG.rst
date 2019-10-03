@@ -2,6 +2,11 @@
 Changelog for package costmap_cspace_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.5.0 (2019-10-02)
+------------------
+* Drop ROS Indigo and Ubuntu Trusty support (`#15 <https://github.com/at-wat/neonavigation_msgs/issues/15>`_)
+* Contributors: Atsushi Watanabe
+
 0.3.1 (2019-01-09)
 ------------------
 
