@@ -2,6 +2,11 @@
 Changelog for package planner_cspace_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.7.0 (2020-01-29)
+------------------
+* planner_cspace_msgs: define a Move action having tolerance parameters (`#23 <https://github.com/at-wat/neonavigation_msgs/issues/23>`_)
+* Contributors: Daiki Maekawa
+
 0.5.0 (2019-10-02)
 ------------------
 * Drop ROS Indigo and Ubuntu Trusty support (`#15 <https://github.com/at-wat/neonavigation_msgs/issues/15>`_)
