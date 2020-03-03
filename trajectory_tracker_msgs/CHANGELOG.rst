@@ -2,6 +2,11 @@
 Changelog for package trajectory_tracker_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.8.0 (2020-03-03)
+------------------
+* trajectory_tracker_msgs: add path header in TrajectoryTrackerStatus (`#26 <https://github.com/at-wat/neonavigation_msgs/issues/26>`_)
+* Contributors: Naotaka Hatao
+
 0.7.0 (2020-01-29)
 ------------------
 
