@@ -36,8 +36,8 @@ if(CATKIN_ENABLE_TESTING)
 
   add_compile_options(-std=c++11)
 
-  catkin_add_gtest(test_convert test/src/test_convert.cpp)
-  target_link_libraries(test_convert ${catkin_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
+  catkin_add_gtest(test_path_with_velocity_conversion test/src/test_path_with_velocity_conversion.cpp)
+  target_link_libraries(test_path_with_velocity_conversion ${catkin_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
 
   find_package(roslint REQUIRED)
   roslint_cpp()
