@@ -2,6 +2,7 @@ geometry_msgs/PoseStamped target_pose
 float64 goal_tolerance_lin
 float64 goal_tolerance_ang         # An angle tolerance to the goal point from the robot.
 float64 goal_tolerance_ang_finish  # An angle tolerance that the robot on the goal point should direct to a certain angle.
+bool continuous_movement_mode      # Set to true to send a next goal continuously. Read https://github.com/at-wat/neonavigation/pull/652 for detailed explanation.
 ---
 ---
 geometry_msgs/PoseStamped base_position
