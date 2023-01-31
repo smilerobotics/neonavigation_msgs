@@ -2,6 +2,11 @@
 Changelog for package safety_limiter_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.12.0 (2023-01-30)
+-------------------
+* safety_limiter_msgs: fix maintainer email (`#29 <https://github.com/at-wat/neonavigation_msgs/issues/29>`_)
+* Contributors: Atsushi Watanabe
+
 0.8.0 (2020-03-03)
 ------------------
 

@@ -2,6 +2,11 @@
 Changelog for package trajectory_tracker_msgs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+0.12.0 (2023-01-30)
+-------------------
+* trajectory_tracker_msgs: rename test target (`#37 <https://github.com/at-wat/neonavigation_msgs/issues/37>`_)
+* Contributors: f-fl0
+
 0.8.0 (2020-03-03)
 ------------------
 * trajectory_tracker_msgs: add path header in TrajectoryTrackerStatus (`#26 <https://github.com/at-wat/neonavigation_msgs/issues/26>`_)
