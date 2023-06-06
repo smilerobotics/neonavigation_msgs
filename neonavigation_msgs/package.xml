@@ -13,6 +13,7 @@
   <exec_depend>planner_cspace_msgs</exec_depend>
   <exec_depend>costmap_cspace_msgs</exec_depend>
   <exec_depend>map_organizer_msgs</exec_depend>
+  <exec_depend>neonavigation_metrics_msgs</exec_depend>
   <exec_depend>safety_limiter_msgs</exec_depend>
   <exec_depend>trajectory_tracker_msgs</exec_depend>
 
