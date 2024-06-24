@@ -51,7 +51,7 @@ TEST(Helper, metricNoTags)
   ASSERT_EQ(0u, m.tags.size());
 }
 
-int main(int argc, char** argv)
+int main(int argc, char ** argv)
 {
   testing::InitGoogleTest(&argc, argv);
 

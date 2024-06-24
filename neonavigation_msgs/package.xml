@@ -8,8 +8,8 @@
   <license>BSD</license>
   <author email="atsushi.w@ieee.org">Atsushi Watanabe</author>
 
-  <buildtool_depend>catkin</buildtool_depend>
-  
+  <buildtool_depend>ament_cmake</buildtool_depend>
+
   <exec_depend>planner_cspace_msgs</exec_depend>
   <exec_depend>costmap_cspace_msgs</exec_depend>
   <exec_depend>map_organizer_msgs</exec_depend>
@@ -18,6 +18,6 @@
   <exec_depend>trajectory_tracker_msgs</exec_depend>
 
   <export>
-    <metapackage/>
+    <build_type>ament_cmake</build_type>
   </export>
 </package>
