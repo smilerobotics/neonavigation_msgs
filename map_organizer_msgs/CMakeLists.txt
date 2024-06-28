@@ -9,7 +9,7 @@ rosidl_generate_interfaces(
     ${PROJECT_NAME}
         msg/OccupancyGridArray.msg
     DEPENDENCIES ${${PROJECT_NAME}_FOUND_BUILD_DEPENDS})
-)
+
 
 if(BUILD_TESTING)
     set(ament_cmake_copyright_FOUND TRUE)
