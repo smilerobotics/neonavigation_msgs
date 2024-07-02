@@ -16,15 +16,16 @@ rosidl_generate_interfaces(
 )
 
 if(BUILD_TESTING)
-    find_package(Threads REQUIRED)
-    set(THREADS_PREFER_PTHREAD_FLAG ON)
     set(ament_cmake_copyright_FOUND TRUE)
     ament_auto_find_test_dependencies()
     ament_lint_auto_find_test_dependencies()
 
     ament_auto_add_gtest(test_path_with_velocity_conversion
         test/src/test_path_with_velocity_conversion.cpp)
+    ament_target_dependencies(test_path_with_velocity_conversion
+        ${rosidl_generate_interfaces_LIBRARY_NAME})
     target_include_directories(test_path_with_velocity_conversion PRIVATE
+        include
         ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
     )
 endif()
