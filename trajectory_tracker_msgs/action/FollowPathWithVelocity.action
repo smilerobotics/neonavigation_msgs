@@ -1,0 +1,10 @@
+
+#goal definition
+trajectory_tracker_msgs/PathWithVelocity path
+---
+#result definition
+std_msgs/Empty result
+---
+#feedback definition
+float32 distance_to_goal
+float32 speed
