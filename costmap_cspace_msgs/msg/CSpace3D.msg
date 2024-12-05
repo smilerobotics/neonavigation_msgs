@@ -1,6 +1,3 @@
-Header header 
-
+std_msgs/Header header
 MapMetaData3D info
-
 int8[] data
-

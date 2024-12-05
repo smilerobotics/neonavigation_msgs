@@ -3,19 +3,17 @@
   href="http://download.ros.org/schema/package_format3.xsd"
   schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>safety_limiter_msgs</name>
+  <name>neonavigation_common_msgs</name>
   <version>0.14.0</version>
-  <description>Message definitions for safety_limiter_msgs package</description>
+  <description>Message definitions for neonavigation_common_msgs package</description>
 
   <maintainer email="atsushi.w@ieee.org">Atsushi Watanabe</maintainer>
   <license>BSD</license>
-  <author email="daikimaekawa29@gmail.com">Daiki Maekawa</author>
 
   <buildtool_depend>ament_cmake</buildtool_depend>
   <buildtool_depend>ament_cmake_auto</buildtool_depend>
   <buildtool_depend>rosidl_default_generators</buildtool_depend>
   <exec_depend>rosidl_default_runtime</exec_depend>
-
   <depend>std_msgs</depend>
 
   <test_depend>ament_lint_auto</test_depend>
@@ -25,5 +23,4 @@
   <export>
     <build_type>ament_cmake</build_type>
   </export>
-
 </package>

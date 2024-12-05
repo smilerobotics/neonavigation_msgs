@@ -27,31 +27,32 @@
  * POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef NEONAVIGATION_METRICS_MSGS_HELPER_H
-#define NEONAVIGATION_METRICS_MSGS_HELPER_H
+#ifndef NEONAVIGATION_METRICS_MSGS__HELPER_H_
+#define NEONAVIGATION_METRICS_MSGS__HELPER_H_
 
 #include <string>
 #include <utility>
 
-#include <neonavigation_metrics_msgs/Metric.h>
-#include <neonavigation_metrics_msgs/Metrics.h>
+#include <neonavigation_metrics_msgs/msg/metric.hpp>
+#include <neonavigation_metrics_msgs/msg/metrics.hpp>
 
 namespace neonavigation_metrics_msgs
 {
-template <typename... Strings>
-Metric metric(
-    const std::string& name,
+  template < typename ... Strings >
+  msg::Metric metric(
+    const std::string & name,
     const double value,
-    const std::string& unit,
-    Strings&&... tags)
-{
-  Metric out;
-  out.name = name;
-  out.value = value;
-  out.unit = unit;
-  (out.tags.push_back(std::forward<Strings>(tags)), ...);
-  return out;
-}
+    const std::string & unit,
+    Strings &&... tags)
+  {
+    msg::Metric out;
+    out.name = name;
+    out.value = value;
+    out.unit = unit;
+    (out.tags.push_back(std::forward < Strings > (tags)), ...);
+    return out;
+  }
+
 }  // namespace neonavigation_metrics_msgs
 
-#endif  // NEONAVIGATION_METRICS_MSGS_HELPER_H
+#endif  // NEONAVIGATION_METRICS_MSGS__HELPER_H_

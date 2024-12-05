@@ -1,24 +1,21 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.5)
 project(planner_cspace_msgs)
 
-set(MESSAGE_DEPENDS
-  actionlib_msgs
-  geometry_msgs
-  std_msgs
+find_package(ament_cmake_auto REQUIRED)
+ament_auto_find_build_dependencies()
+set(CMAKE_CXX_STANDARD 17)
+
+rosidl_generate_interfaces(
+    ${PROJECT_NAME}
+        action/MoveWithTolerance.action
+        msg/PlannerStatus.msg
+    DEPENDENCIES ${${PROJECT_NAME}_FOUND_BUILD_DEPENDS}
 )
 
-find_package(catkin REQUIRED COMPONENTS message_generation ${MESSAGE_DEPENDS})
+if(BUILD_TESTING)
+    set(ament_cmake_copyright_FOUND TRUE)
+    ament_auto_find_test_dependencies()
+    ament_lint_auto_find_test_dependencies()
+endif()
 
-add_action_files(
-  DIRECTORY
-    action
-  FILES
-    MoveWithTolerance.action
-)
-
-add_message_files(
-  FILES
-    PlannerStatus.msg
-)
-generate_messages(DEPENDENCIES ${MESSAGE_DEPENDS})
-catkin_package(CATKIN_DEPENDS message_runtime ${MESSAGE_DEPENDS})
+ament_auto_package()

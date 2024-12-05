@@ -1,10 +1,11 @@
-byte NO_PATH = 0
-byte FAR_FROM_PATH = 1
-byte FOLLOWING = 2
-byte GOAL = 3
-
-Header header
+byte NO_PATH=0
+byte FAR_FROM_PATH=1
+byte FOLLOWING=2
+byte GOAL=3
+std_msgs/Header header
 float32 distance_remains
 float32 angle_remains
 int32 status
-Header path_header
+std_msgs/Header path_header
+int32 nearest_pose_index
+float32 distance_to_path

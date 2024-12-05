@@ -1,49 +1,33 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.5)
 project(trajectory_tracker_msgs)
 
-set(MESSAGE_DEPENDS
-  geometry_msgs
-  std_msgs
+find_package(ament_cmake_auto REQUIRED)
+ament_auto_find_build_dependencies()
+set(CMAKE_CXX_STANDARD 17)
+
+rosidl_generate_interfaces(
+    ${PROJECT_NAME}
+        msg/TrajectoryServerStatus.msg
+        msg/PoseStampedWithVelocity.msg
+        msg/PathWithVelocity.msg
+        msg/TrajectoryTrackerStatus.msg
+        srv/ChangePath.srv
+    DEPENDENCIES ${${PROJECT_NAME}_FOUND_BUILD_DEPENDS}
 )
 
-find_package(catkin REQUIRED COMPONENTS message_generation ${MESSAGE_DEPENDS})
+if(BUILD_TESTING)
+    set(ament_cmake_copyright_FOUND TRUE)
+    ament_auto_find_test_dependencies()
+    ament_lint_auto_find_test_dependencies()
 
-add_service_files(
-  FILES
-    ChangePath.srv
-)
-add_message_files(
-  FILES
-    PathWithVelocity.msg
-    PoseStampedWithVelocity.msg
-    TrajectoryServerStatus.msg
-    TrajectoryTrackerStatus.msg
-)
-generate_messages(DEPENDENCIES ${MESSAGE_DEPENDS})
-catkin_package(
-  INCLUDE_DIRS include
-  CATKIN_DEPENDS message_runtime ${MESSAGE_DEPENDS}
-)
-
-include_directories(include ${catkin_INCLUDE_DIRS})
-
-if(CATKIN_ENABLE_TESTING)
-  set(THREADS_PREFER_PTHREAD_FLAG ON)
-  find_package(Threads REQUIRED)
-
-  find_package(roscpp REQUIRED)
-  find_package(rosunit REQUIRED)
-
-  add_compile_options(-std=c++11)
-
-  catkin_add_gtest(test_path_with_velocity_conversion test/src/test_path_with_velocity_conversion.cpp)
-  target_link_libraries(test_path_with_velocity_conversion ${catkin_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT})
-
-  find_package(roslint REQUIRED)
-  roslint_cpp()
-  roslint_add_test()
+    ament_auto_add_gtest(test_path_with_velocity_conversion
+        test/src/test_path_with_velocity_conversion.cpp)
+    ament_target_dependencies(test_path_with_velocity_conversion
+        ${rosidl_generate_interfaces_LIBRARY_NAME})
+    target_include_directories(test_path_with_velocity_conversion PRIVATE
+        include
+        ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
+    )
 endif()
 
-install(DIRECTORY include/${PROJECT_NAME}/
-  DESTINATION ${CATKIN_PACKAGE_INCLUDE_DESTINATION}
-)
+ament_auto_package()
