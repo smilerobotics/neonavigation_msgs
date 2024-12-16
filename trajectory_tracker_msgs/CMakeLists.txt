@@ -23,12 +23,8 @@ if(BUILD_TESTING)
 
     ament_auto_add_gtest(test_path_with_velocity_conversion
         test/src/test_path_with_velocity_conversion.cpp)
-    ament_target_dependencies(test_path_with_velocity_conversion
-        ${rosidl_generate_interfaces_LIBRARY_NAME})
-    target_include_directories(test_path_with_velocity_conversion PRIVATE
-        include
-        ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
-    )
+    rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+    target_link_libraries(test_path_with_velocity_conversion "${cpp_typesupport_target}")
 endif()
 
 ament_auto_package()

@@ -18,12 +18,8 @@ if(BUILD_TESTING)
     ament_lint_auto_find_test_dependencies()
 
     ament_auto_add_gtest(test_helper test/src/test_helper.cpp)
-    ament_target_dependencies(test_helper
-        ${rosidl_generate_interfaces_LIBRARY_NAME})
-    target_include_directories(test_helper PRIVATE
-        include
-        ${CMAKE_CURRENT_BINARY_DIR}/rosidl_generator_cpp
-    )
+    rosidl_get_typesupport_target(cpp_typesupport_target ${PROJECT_NAME} "rosidl_typesupport_cpp")
+    target_link_libraries(test_helper "${cpp_typesupport_target}")
 endif()
 
 ament_auto_package()
