@@ -7,5 +7,5 @@ float32 distance_remains
 float32 angle_remains
 int32 status
 std_msgs/Header path_header
-int32 nearest_pose_index
+int32 last_passed_index
 float32 distance_to_path
