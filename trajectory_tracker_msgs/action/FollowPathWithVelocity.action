@@ -8,3 +8,4 @@ std_msgs/Empty result
 #feedback definition
 float32 distance_to_goal
 float32 speed
+int32 last_passed_index
