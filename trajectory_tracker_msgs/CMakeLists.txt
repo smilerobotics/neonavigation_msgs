@@ -7,6 +7,7 @@ set(CMAKE_CXX_STANDARD 17)
 
 rosidl_generate_interfaces(
     ${PROJECT_NAME}
+        action/FollowPathWithVelocity.action
         msg/TrajectoryServerStatus.msg
         msg/PoseStampedWithVelocity.msg
         msg/PathWithVelocity.msg
